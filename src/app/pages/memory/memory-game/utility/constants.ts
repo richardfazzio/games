@@ -1,6 +1,11 @@
 // Refers to the max dimension of X and Y
 export const MAX_BOARD_SIZE = 6;
 
+export const MAX_NUMBER_OF_GUESSES = 10;
+
+// Represents time in ms for card animations / updates
+export const CARD_DELAY = 700;
+
 export const MEMORY_CARDS = {
     AIRPLANE: 'AIRPLANE', // Card 1
     AMBULANCE: 'AMBULANCE', // Card 2
@@ -20,4 +25,9 @@ export const MEMORY_CARDS = {
     SUBWAY: 'SUBWAY', // Card 16
     TRAIN: 'TRAIN', // Card 17
     WRENCH: 'WRENCH' // Card 18
+}
+
+export const GAME_STATUS = {
+    GAME_OVER: 'GAME_OVER',
+    PLAYING: 'PLAYING'
 }

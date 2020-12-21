@@ -15,6 +15,10 @@ export class CardComponent {
     CARD_TYPES = MEMORY_CARDS;
 
     cardSelected() {
+        // If card is already guessed correctly don't emit click event
+        if (this.card.guessedCorrectly) {
+            return;
+        }
         this.selected.emit(null);
     }
 }

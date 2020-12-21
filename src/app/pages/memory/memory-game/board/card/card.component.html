@@ -1,23 +1,59 @@
 <div class="memory-card" [ngClass]="card.type" (click)="cardSelected()">
     <div *ngIf="card.selected || card.guessedCorrectly; else questionMark" [ngSwitch]="card.type">
-        <i *ngSwitchCase="CARD_TYPES.AIRPLANE" class="fa fa-plane fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.AMBULANCE" class="fa fa-ambulance fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.BUG" class="fa fa-bug fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.BOAT" class="fa fa-ship fa-3x" aria-hidden="true"></i> 
-        <i *ngSwitchCase="CARD_TYPES.BUS" class="fa fa-bus fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.CAR" class="fa fa-car fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.COFFEE" class="fa fa-coffee fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.DIAMOND" class="fa fa-diamond fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.GAME_PAD" class="fa fa-gamepad fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.GRADUATION" class="fa fa-graduation-cap fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.HEAD_PHONES" class="fa fa-headphones fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.MOTORCYCLE" class="fa fa-motorcycle fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.PAPER_PLANE" class="fa fa-paper-plane fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.ROCKET" class="fa fa-rocket fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.SHOPPING_BAG" class="fa fa-shopping-bag fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.SUBWAY" class="fa fa-subway fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.TRAIN" class="fa fa-train fa-3x" aria-hidden="true"></i>
-        <i *ngSwitchCase="CARD_TYPES.WRENCH" class="fa fa-wrench fa-3x" aria-hidden="true"></i>
+        <i *ngSwitchCase="CARD_TYPES.AIRPLANE" class="fa fa-plane fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Airplane"></i>
+        <i *ngSwitchCase="CARD_TYPES.AMBULANCE" class="fa fa-ambulance fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Ambulance"></i>
+        <i *ngSwitchCase="CARD_TYPES.BUG" class="fa fa-bug fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Bug"></i>
+        <i *ngSwitchCase="CARD_TYPES.BOAT" class="fa fa-ship fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Boat"></i>
+        <i *ngSwitchCase="CARD_TYPES.BUS" class="fa fa-bus fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Bus"></i>
+        <i *ngSwitchCase="CARD_TYPES.CAR" class="fa fa-car fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Car"></i>
+        <i *ngSwitchCase="CARD_TYPES.COFFEE" class="fa fa-coffee fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Coffee"></i>
+        <i *ngSwitchCase="CARD_TYPES.DIAMOND" class="fa fa-diamond fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Diamond"></i>
+        <i *ngSwitchCase="CARD_TYPES.GAME_PAD" class="fa fa-gamepad fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Gamepad"></i>
+        <i *ngSwitchCase="CARD_TYPES.GRADUATION" class="fa fa-graduation-cap fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Graduation cap"></i>
+        <i *ngSwitchCase="CARD_TYPES.HEAD_PHONES" class="fa fa-headphones fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Headphones"></i>
+        <i *ngSwitchCase="CARD_TYPES.MOTORCYCLE" class="fa fa-motorcycle fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Motorcyle"></i>
+        <i *ngSwitchCase="CARD_TYPES.PAPER_PLANE" class="fa fa-paper-plane fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Paper plane"></i>
+        <i *ngSwitchCase="CARD_TYPES.ROCKET" class="fa fa-rocket fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Rocket"></i>
+        <i *ngSwitchCase="CARD_TYPES.SHOPPING_BAG" class="fa fa-shopping-bag fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Shopping bag"></i>
+        <i *ngSwitchCase="CARD_TYPES.SUBWAY" class="fa fa-subway fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Subway"></i>
+        <i *ngSwitchCase="CARD_TYPES.TRAIN" class="fa fa-train fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Train"></i>
+        <i *ngSwitchCase="CARD_TYPES.WRENCH" class="fa fa-wrench fa-3x"
+            [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
+            title="Wrench"></i>
     </div>
     <ng-template #questionMark>
         <div>
