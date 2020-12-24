@@ -4,3 +4,9 @@ export interface MemoryCard {
     guessedCorrectly: boolean;
     notGuessed?: boolean;
 }
+
+export interface GameState {
+    state?: string;
+    won?: boolean;
+    guessesLeft?: number;
+}

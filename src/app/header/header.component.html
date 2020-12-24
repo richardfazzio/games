@@ -1,10 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <a class="navbar-brand link text text-light" [routerLink]="HOME_PATH.path">{{HOME_PATH.value}}</a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item"  *ngFor="let route of ROUTES" [routerLink]="route.path" routerLinkActive >
-        <a class="nav-link link text text-light">{{route.value}}</a>
-      </li>
-    </ul>
+  <a href [routerLink]="''">
+    <i class="fa fa-home fa-2x text-light" aria-hidden="true"></i>
+  </a>
+  <div class="header-title m-auto pl-3 d-flex">
+    <div class="navbar-brand text text-light">{{titleText}}</div>
   </div>
 </nav>

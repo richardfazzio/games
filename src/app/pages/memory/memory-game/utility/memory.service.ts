@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CARD_DELAY, MAX_BOARD_SIZE, MAX_NUMBER_OF_GUESSES, MEMORY_CARDS } from './constants';
-import { MemoryCard } from './interfaces';
+import { CARD_DELAY, MAX_BOARD_SIZE, INITIAL_NUMBER_OF_GUESSES, MEMORY_CARDS, GAME_STATUS } from './constants';
+import { GameState, MemoryCard } from './interfaces';
 
 // Memory
 // Do not provide in root because this service is only needed in the memory module
@@ -9,23 +9,21 @@ import { MemoryCard } from './interfaces';
     providedIn: 'root'
 })
 export class MemoryService {
-    private _board = []
-    private SIZE_OF_BOARD: number;
     gameSubsription = new Subject<MemoryCard[][]>();
-
+    gameStateSubject = new Subject<GameState>();
+    
+    private _board = []
+    private SIZE_OF_BOARD = MAX_BOARD_SIZE;
     // For keeping track of game
     private gameOver = false;
     private wrongGuesses = 0;
     private correctGuuess = 0;
     private previousGuess = []; // [row, column] of last guess
     private processingGuess = false;
-    private NUMBER_OF_PAIRS: number;
+    numberOfGuesses = INITIAL_NUMBER_OF_GUESSES;
 
     constructor() {
-        this.SIZE_OF_BOARD = MAX_BOARD_SIZE;
-        this.NUMBER_OF_PAIRS = Object.keys(MEMORY_CARDS).length; // Number of types of cards => the amount they need to guess
         this.resetBoard();
-        this.gameSubsription.next(this._board);
     }
 
     // Returns an array of Memory Cards randomly assigning slots
@@ -38,6 +36,7 @@ export class MemoryService {
 
     // Resets board state
     resetBoard(): void {
+        this.numberOfGuesses = INITIAL_NUMBER_OF_GUESSES; // Number of types of cards => the amount they need to guess
         this.gameOver = false;
         this.processingGuess = false;
         this.wrongGuesses = 0;
@@ -52,6 +51,12 @@ export class MemoryService {
             }
             this._board.push(row);
         }
+        this.gameSubsription.next(this._board);
+        this.gameStateSubject.next({
+            state: GAME_STATUS.NOT_STARTED,
+            won: false,
+            guessesLeft: this.numberOfGuesses
+        });
     }
 
     // Card selected during game
@@ -61,6 +66,12 @@ export class MemoryService {
         if (this.gameOver || this.processingGuess) {
             return;
         }
+
+        // If they click the previous guess, return
+        if (this.previousGuess[0] === row && this.previousGuess[1] === column) {
+            return;
+        }
+
         this.processingGuess = true;
         // If they click the same card, do no penalize them
         this.selectCardOnBoard(row, column, true);
@@ -71,19 +82,23 @@ export class MemoryService {
             this.gameSubsription.next(this.board);
             setTimeout(() => {
                 this.processingGuess = false;
-            }, CARD_DELAY);
+            }, CARD_DELAY - 500);
         } else {
-            const [i, j] = this.previousGuess; // i and j are indices of previous gess
+            const [i, j] = this.previousGuess; // i and j are indices of previous guess
             const card1 = this.board[i][j];
             const card2 = this.board[row][column];
             if (this.compareGuess(card1, card2)) {
-                this.wrongGuesses--;
+                this.numberOfGuesses++;
                 this.correctGuuess++;
                 this.setCardsAsGuessedCorrectly(i, j, row, column);
-                if (this.correctGuuess >= this.NUMBER_OF_PAIRS) {
+                    if (this.correctGuuess >= this.numberOfGuesses) {
                     this.gameWon();
                 }
                 setTimeout(() => {
+                    this.gameStateSubject.next({
+                        guessesLeft: this.numberOfGuesses - this.wrongGuesses,
+                        state: GAME_STATUS.GUESSED_CORRECT
+                    });
                     this.processingGuess = false;
                 }, CARD_DELAY);
             } else {
@@ -91,10 +106,14 @@ export class MemoryService {
                 // Unselect cards and increment wrong guess
                 setTimeout(() => {
                     this.wrongGuesses++;
-                    if (this.wrongGuesses > MAX_NUMBER_OF_GUESSES) {
+                    if (this.wrongGuesses >= this.numberOfGuesses) {
                         return this.gameLost()
                     }
                     this.unSelectCards(i, j, row, column)
+                    this.gameStateSubject.next({
+                        guessesLeft: this.numberOfGuesses - this.wrongGuesses,
+                        state: GAME_STATUS.GUESSED_WRONG
+                    });
                     this.processingGuess = false;
                 }, CARD_DELAY * 2);
 
@@ -146,6 +165,11 @@ export class MemoryService {
         console.log('GAME WON');
         this.gameOver = true;
         this.gameSubsription.next(this._board);
+        this.gameStateSubject.next({
+            state: GAME_STATUS.GAME_WON,
+            won: true,
+            guessesLeft: this.numberOfGuesses
+        });
     }
 
     private gameLost(): void {
@@ -153,6 +177,11 @@ export class MemoryService {
         this.gameOver = true;
         this.revealCards();
         this.gameSubsription.next(this._board);
+        this.gameStateSubject.next({
+            state: GAME_STATUS.GAME_OVER,
+            won: false,
+            guessesLeft: 0
+        });
     }
 
     private revealCards(): void {
