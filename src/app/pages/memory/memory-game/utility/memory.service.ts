@@ -91,16 +91,18 @@ export class MemoryService {
                 this.numberOfGuesses++;
                 this.correctGuuess++;
                 this.setCardsAsGuessedCorrectly(i, j, row, column);
-                    if (this.correctGuuess >= this.numberOfGuesses) {
+                if (this.correctGuuess >= this.numberOfGuesses) {
                     this.gameWon();
+                } else {
+                    setTimeout(() => {
+                        this.gameStateSubject.next({
+                            guessesLeft: this.numberOfGuesses - this.wrongGuesses,
+                            state: GAME_STATUS.GUESSED_CORRECT,
+                            guessed: 1
+                        });
+                        this.processingGuess = false;
+                    }, CARD_DELAY);
                 }
-                setTimeout(() => {
-                    this.gameStateSubject.next({
-                        guessesLeft: this.numberOfGuesses - this.wrongGuesses,
-                        state: GAME_STATUS.GUESSED_CORRECT
-                    });
-                    this.processingGuess = false;
-                }, CARD_DELAY);
             } else {
                 // Incorrect guess
                 // Unselect cards and increment wrong guess
@@ -112,7 +114,8 @@ export class MemoryService {
                     this.unSelectCards(i, j, row, column)
                     this.gameStateSubject.next({
                         guessesLeft: this.numberOfGuesses - this.wrongGuesses,
-                        state: GAME_STATUS.GUESSED_WRONG
+                        state: GAME_STATUS.GUESSED_WRONG,
+                        guessed: 2 // guessed incorrectly
                     });
                     this.processingGuess = false;
                 }, CARD_DELAY * 2);
@@ -162,7 +165,6 @@ export class MemoryService {
     }
 
     private gameWon(): void {
-        console.log('GAME WON');
         this.gameOver = true;
         this.gameSubsription.next(this._board);
         this.gameStateSubject.next({
@@ -173,7 +175,6 @@ export class MemoryService {
     }
 
     private gameLost(): void {
-        console.log('GAME LOST');
         this.gameOver = true;
         this.revealCards();
         this.gameSubsription.next(this._board);

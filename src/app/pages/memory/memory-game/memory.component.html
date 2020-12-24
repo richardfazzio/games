@@ -10,10 +10,15 @@
                 </div>
                 <div class="row">
                     <div class="col-sm d-flex justify-content-center align-items-center pt-3">
+                        <div class="form-check pr-2 sound-radio-button">
+                            <input type="checkbox" class="form-check-input" [(ngModel)]="sound">
+                            <label class="form-check-label">Sound</label>
+                        </div>
                         <button class="btn btn-dark" (click)="resetBoard()">Reset Board</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <audio #audioTag [src]="audioSrc" autoplay="false"></audio>
 </main>
