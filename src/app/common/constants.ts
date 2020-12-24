@@ -1,3 +1,4 @@
+import { INITIAL_NUMBER_OF_GUESSES } from '../pages/memory/memory-game/utility/constants';
 import { PageRoute } from './interfaces';
 
 export const HOME_PATH: PageRoute = {
@@ -18,13 +19,15 @@ export const HEADER_TITLES = {
 }
 
 // Paths for all valid games
-export const GAME_ROUTES = {
+export const GAMES = {
     MEMORY: {
         path: ['memory'],
         modal: {
             title: 'Memory',
             body: `
-                apple
+                <h5>Rules:</h5>
+                <p>There is 18 pairs of pictures, you will start with ${INITIAL_NUMBER_OF_GUESSES} guesses. Each time you find the correct pair, you will be awarded\n
+                one extra guess. Find all of the pairs before you run out of guesses!</p>
             `
         },
         cardTitle: 'Memory',

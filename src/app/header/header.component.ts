@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
+import { HOME_PATH } from '../common/constants';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,7 @@ import { filter, map, switchMap } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
   titleText: string;
+  homeRoute = HOME_PATH;
   private urlSubscription: Subscription;
 
 

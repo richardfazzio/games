@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { GAME_ROUTES } from 'src/app/common/constants';
+import { GAMES } from 'src/app/common/constants';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { GAME_ROUTES } from 'src/app/common/constants';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
-  games = GAME_ROUTES;
+  games = GAMES;
   @ViewChild('rulesModal', { static: true }) rulesModal: ElementRef;
   constructor(private modalService: NgbModal) { }
 

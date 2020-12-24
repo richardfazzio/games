@@ -1,7 +1,7 @@
 // Refers to the max dimension of X and Y
 export const MAX_BOARD_SIZE = 6;
 
-export const INITIAL_NUMBER_OF_GUESSES = 10;
+export const INITIAL_NUMBER_OF_GUESSES = 11;
 
 // Represents time in ms for card animations / updates
 export const CARD_DELAY = 700;
