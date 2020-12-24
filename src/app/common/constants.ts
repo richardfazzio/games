@@ -34,8 +34,3 @@ export const GAMES = {
         cardBody: 'Challenge yourself with a game of Memory!'
     }
 }
-
-export const GAME_RULES = {
-
-}
-

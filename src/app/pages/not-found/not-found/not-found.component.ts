@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,9 @@ import { Router } from '@angular/router';
   templateUrl: './not-found.component.html',
   styleUrls: ['./not-found.component.less']
 })
-export class NotFoundComponent implements OnInit {
+export class NotFoundComponent {
 
   constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   goHome(): void {
     this.router.navigate(['/']);

@@ -1,11 +1,13 @@
 // Refers to the max dimension of X and Y
 export const MAX_BOARD_SIZE = 6;
 
+// Guesses play starts with
 export const INITIAL_NUMBER_OF_GUESSES = 11;
 
 // Represents time in ms for card animations / updates
 export const CARD_DELAY = 700;
 
+// Types of Memory Cards 
 export const MEMORY_CARDS = {
     AIRPLANE: 'AIRPLANE', // Card 1
     AMBULANCE: 'AMBULANCE', // Card 2
@@ -27,6 +29,7 @@ export const MEMORY_CARDS = {
     WRENCH: 'WRENCH' // Card 18
 }
 
+// Game statuses emitted by memory.service [gameStateSubject]
 export const GAME_STATUS = {
     GAME_OVER: 'GAME_OVER',
     GAME_WON: 'GAME_WON',
