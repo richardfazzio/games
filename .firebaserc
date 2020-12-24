@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "games-2d8a3"
+  },
+  "targets": {
+    "games-2d8a3": {
+      "hosting": {
+        "games": [
+          "games-2d8a3"
+        ]
+      }
+    }
+  }
+}
