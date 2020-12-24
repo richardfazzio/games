@@ -1,10 +1,7 @@
 <div class="container">
     <div class="row" *ngFor="let row of board; let i = index">
-        <div
-            class="col-sm piece square text-light"
-            *ngFor="let elem of row; let j = index"
-            [ngClass]="{'bg-secondary': isDarkBackground(i, j)}"
-            >
+        <div class="col-sm piece square text-light" *ngFor="let elem of row; let j = index"
+            [ngClass]="{'bg-secondary': isDarkBackground(i, j)}">
             <app-memory-card [card]="board[i][j]" (selected)="cardSelected(i, j)"></app-memory-card>
         </div>
     </div>

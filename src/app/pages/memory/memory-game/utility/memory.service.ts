@@ -82,7 +82,7 @@ export class MemoryService {
             this.gameSubsription.next(this.board);
             setTimeout(() => {
                 this.processingGuess = false;
-            }, CARD_DELAY - 500);
+            }, CARD_DELAY - 750);
         } else {
             const [i, j] = this.previousGuess; // i and j are indices of previous guess
             const card1 = this.board[i][j];

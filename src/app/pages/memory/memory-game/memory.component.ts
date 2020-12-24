@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { GAMES } from 'src/app/common/constants';
 import { GAME_STATUS, INITIAL_NUMBER_OF_GUESSES } from './utility/constants';
 import { GameState } from './utility/interfaces';
 import { MemoryService } from './utility/memory.service';
@@ -20,6 +21,7 @@ export class MemoryComponent implements OnInit, OnDestroy {
   }
   statusText: string;
   numberOfGuessesLeft = INITIAL_NUMBER_OF_GUESSES;
+  games = GAMES;
   audioSrc = '';
   sound = true;
 
@@ -30,7 +32,7 @@ export class MemoryComponent implements OnInit, OnDestroy {
       this.numberOfGuessesLeft = state.guessesLeft || this.numberOfGuessesLeft;
       this.statusText = state.state && this.getStatus(state.state) || this.statusText;
       // If guessed is truthy play sound
-      if (!!state.guessed) {
+      if (this.sound && !!state.guessed) {
         // If guessed is 1 they guessed correctly, else the guess incorrectly
         this.audioSrc = state.guessed === 1 ? this.GAME_SOUNDS.GUESSED_CORRECT : this.GAME_SOUNDS.GUESSED_INCORRECT;
         this.playGuessedSound();
