@@ -1,9 +1,25 @@
+.container {
+  height: 100%;
 
-.game-card {
-    width: 15rem;
-    
-    .fa-svg {
+  .card {
+    &.description {
+      margin: 3rem 0;
+      height: min-content;
+    }
+  }
+
+  .cards {
+    padding-top: calc(100% - 55rem);
+    padding-bottom: 3rem;
+    margin: auto;
+
+    .game-card {
+      width: 15rem;
+
+      .fa-svg {
         font-size: 12rem;
         text-align: center;
+      }
     }
+  }
 }

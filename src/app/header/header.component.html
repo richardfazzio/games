@@ -1,8 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <a href [routerLink]="''" class="home-icon pl-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark d-flex justify-content-center content align-items-center">
+  <a href [routerLink]="homeRoute.path" class="home-icon pl-3">
     <i class="fa fa-home fa-2x text-light" aria-hidden="true"></i>
   </a>
-  <div class="header-title m-auto pl-3 d-flex">
+  <div class="header-title m-auto pl-3">
     <div class="navbar-brand text text-light">{{titleText}}</div>
   </div>
 </nav>
+<!-- <nav class="navbar fixed-top footer-light bg-dark footer-shadow content container-fluid">
+  <div class="text-center text-light">
+    hi
+  </div>
+</nav> -->

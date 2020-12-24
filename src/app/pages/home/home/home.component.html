@@ -1,11 +1,28 @@
-<main role="main" class="container">
-    <div class="card game-card pt-4">
-        <i class="fa fa-question fa-svg text-light bg-dark pt-3" aria-hidden="true"></i>
-        <div class="card-body bg-secondary">
-          <h5 class="card-title text-light">{{games.MEMORY.cardTitle}}</h5>
-          <p class="card-text text-light pb-1">{{games.MEMORY.cardBody}}</p>
-          <a href class="btn btn-dark mr-4" [routerLink]="games.MEMORY.path">Play</a>
-          <app-rules-modal-button  [title]="games.MEMORY.modal.title" [body]="games.MEMORY.modal.body"></app-rules-modal-button>
-        </div>
+  <div class="container">
+    <div class="col">
+      <!-- <h3 class="row title text-dark">Welcome to a website made to entertain you while you are bored!</h3>
+      <p class="row text-dark pt-2">qwe</p>
+    </div> -->
+    <div class="card description">
+      <div class="card-header bg-dark text-light text-center">
+        Welcome to a website made to entertain you while you are bored!
       </div>
-</main>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0 text-center">
+          <p>Below are some games you can play, simply click the play button on one of the cards below to begin. Also, you can click the rules button for any explanation about the game you wish to play!</p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+  <div class="row my-auto cards d-flex justify-content-center align-items-end">
+    <div class="card game-card">
+      <i class="fa fa-question fa-svg text-light bg-dark pt-3" aria-hidden="true"></i>
+      <div class="card-body bg-secondary">
+        <h5 class="card-title text-light">{{games.MEMORY.cardTitle}}</h5>
+        <p class="card-text text-light pb-1">{{games.MEMORY.cardBody}}</p>
+        <a href class="btn btn-dark mr-4" [routerLink]="games.MEMORY.path">Play</a>
+        <app-rules-modal-button [title]="games.MEMORY.modal.title" [body]="games.MEMORY.modal.body">
+        </app-rules-modal-button>
+      </div>
+    </div>
+  </div>
