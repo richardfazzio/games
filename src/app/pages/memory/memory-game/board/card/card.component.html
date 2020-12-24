@@ -1,4 +1,4 @@
-<div class="memory-card" [ngClass]="card.type" (click)="cardSelected()">
+<div class="memory-card" (click)="cardSelected()">
     <div *ngIf="card.selected || card.guessedCorrectly; else questionMark" [ngSwitch]="card.type">
         <i *ngSwitchCase="CARD_TYPES.AIRPLANE" class="fa fa-plane fa-3x"
             [ngClass]="{'text-success': card.guessedCorrectly, 'text-danger': card.notGuessed}" aria-hidden="true"
