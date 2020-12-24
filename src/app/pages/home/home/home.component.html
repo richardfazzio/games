@@ -1,10 +1,11 @@
 <main role="main" class="container">
-    <div class="card pt-4" style="width: 15rem;">
+    <div class="card game-card pt-4">
         <i class="fa fa-question fa-svg text-light bg-dark pt-3" aria-hidden="true"></i>
         <div class="card-body bg-secondary">
-          <h5 class="card-title text-light">Memory</h5>
-          <p class="card-text text-light">Challenge yourself with a game of Memory!</p>
-          <a href class="btn btn-dark" [routerLink]="'memory'">Play</a>
+          <h5 class="card-title text-light">{{games.MEMORY.cardTitle}}</h5>
+          <p class="card-text text-light pb-1">{{games.MEMORY.cardBody}}</p>
+          <a href class="btn btn-dark mr-4" [routerLink]="games.MEMORY.path">Play</a>
+          <app-rules-modal-button  [title]="games.MEMORY.modal.title" [body]="games.MEMORY.modal.body"></app-rules-modal-button>
         </div>
       </div>
 </main>

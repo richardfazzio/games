@@ -28,8 +28,6 @@ export class BoardComponent implements OnInit, OnDestroy {
     }
 
     cardSelected(row: number, column: number) {
-        console.log(row, column);
-        
         this.memoryService.cardSelected(row, column);
     }
 

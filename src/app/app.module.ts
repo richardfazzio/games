@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeModule } from './pages/home/home.module';
 import { NotFoundModule } from './pages/not-found/not-found.module';
+import { SharedModule } from './common/shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { NotFoundModule } from './pages/not-found/not-found.module';
     FooterComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     HomeModule,
@@ -25,7 +28,8 @@ import { NotFoundModule } from './pages/not-found/not-found.module';
     NotFoundModule,
     RouterModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
