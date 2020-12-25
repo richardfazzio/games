@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CARD_DELAY, MAX_BOARD_SIZE, INITIAL_NUMBER_OF_GUESSES, MEMORY_CARDS, GAME_STATUS } from './constants';
+import { CARD_DELAY, MAX_BOARD_SIZE, INITIAL_NUMBER_OF_GUESSES, MEMORY_CARDS, GAME_STATUS, FIRST_CARD_DELAY } from './constants';
 import { GameState, MemoryCard } from './interfaces';
 
 // Memory
@@ -82,7 +82,8 @@ export class MemoryService {
             this.gameSubsription.next(this.board);
             setTimeout(() => {
                 this.processingGuess = false;
-            }, CARD_DELAY - 750);
+                // 0.25 second between clicks
+            }, FIRST_CARD_DELAY);
         } else {
             const [i, j] = this.previousGuess; // i and j are indices of previous guess
             const card1 = this.board[i][j];
