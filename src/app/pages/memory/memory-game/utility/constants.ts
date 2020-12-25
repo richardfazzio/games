@@ -2,10 +2,11 @@
 export const MAX_BOARD_SIZE = 6;
 
 // Guesses play starts with
-export const INITIAL_NUMBER_OF_GUESSES = 11;
+export const INITIAL_NUMBER_OF_GUESSES = 15;
 
 // Represents time in ms for card animations / updates
 export const CARD_DELAY = 700;
+export const FIRST_CARD_DELAY = 250;
 
 // Types of Memory Cards 
 export const MEMORY_CARDS = {
