@@ -23,6 +23,9 @@ speed-measure-plugin*.json
 .settings/
 *.sublime-workspace
 
+# Firebase files to ignore
+.firebase/*
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
