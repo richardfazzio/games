@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RulesComponent } from './rules.component';
+import { CondescendingPageComponent } from './condescending-page.component';
 
-describe('RulesComponent', () => {
-  let component: RulesComponent;
-  let fixture: ComponentFixture<RulesComponent>;
+describe('CondescendingPageComponent', () => {
+  let component: CondescendingPageComponent;
+  let fixture: ComponentFixture<CondescendingPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RulesComponent ]
+      declarations: [ CondescendingPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RulesComponent);
+    fixture = TestBed.createComponent(CondescendingPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

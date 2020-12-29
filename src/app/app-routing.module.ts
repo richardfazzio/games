@@ -20,6 +20,14 @@ const routes: Routes = [
       title: HEADER_TITLES.MEMORY
     }
   },
+  // Condescending Words Game
+  {
+    path: 'condescending',
+    loadChildren: () => import('./pages/condescending-words/condescending-words.module').then(m => m.CondescendingWordsModule),
+    data: {
+      title: HEADER_TITLES.CONDESCENDING_WORDS
+    }
+  },
   {
     path: 'notFound',
     component: NotFoundComponent,

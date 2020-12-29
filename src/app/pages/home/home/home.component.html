@@ -1,6 +1,6 @@
-  <div class="container">
-    <div class="col">
-      <!-- <h3 class="row title text-dark">Welcome to a website made to entertain you while you are bored!</h3>
+<div class="container">
+  <div class="col">
+    <!-- <h3 class="row title text-dark">Welcome to a website made to entertain you while you are bored!</h3>
       <p class="row text-dark pt-2">qwe</p>
     </div> -->
     <div class="card description">
@@ -9,20 +9,37 @@
       </div>
       <div class="card-body">
         <blockquote class="blockquote mb-0 text-center">
-          <p>Below are some games you can play, simply click the play button on one of the cards below to begin. Also, you can click the rules button for any explanation about the game you wish to play!</p>
+          <p>Below are some games you can play, simply click the play button on one of the cards below to begin. Also,
+            you can click the rules button for any explanation about the game you wish to play!</p>
         </blockquote>
       </div>
     </div>
   </div>
-  <div class="row my-auto cards d-flex justify-content-center align-items-end">
-    <div class="card game-card">
-      <i class="fa fa-question fa-svg text-light bg-dark pt-3" aria-hidden="true"></i>
-      <div class="card-body bg-secondary">
-        <h5 class="card-title text-light">{{games.MEMORY.cardTitle}}</h5>
-        <p class="card-text text-light pb-1">{{games.MEMORY.cardBody}}</p>
-        <a href class="btn btn-dark mr-4" [routerLink]="games.MEMORY.path">Play</a>
-        <app-rules-modal-button [title]="games.MEMORY.modal.title" [body]="games.MEMORY.modal.body">
-        </app-rules-modal-button>
+  <div class="d-flex">
+
+    <div class="row my-auto cards d-flex justify-content-center align-items-end">
+      <div class="card game-card">
+        <i class="fa fa-question fa-svg text-light bg-dark pt-3" aria-hidden="true"></i>
+        <div class="card-body bg-secondary">
+          <h5 class="card-title text-light">{{games.MEMORY.cardTitle}}</h5>
+          <p class="card-text text-light pb-1">{{games.MEMORY.cardBody}}</p>
+          <a href class="btn btn-dark mr-4" [routerLink]="games.MEMORY.path">Play</a>
+          <app-modal-button [title]="games.MEMORY.modal.title" [body]="games.MEMORY.modal.body">
+          </app-modal-button>
+        </div>
+      </div>
+    </div>
+    <div class="row my-auto cards d-flex justify-content-center align-items-end">
+      <div class="card game-card">
+        <i class="fa fa-keyboard-o fa-svg text-light bg-dark pt-3" aria-hidden="true"></i>
+        <div class="card-body bg-secondary">
+          <h5 class="card-title text-light">{{games.CONDESCENDING_WORDS.cardTitle}}</h5>
+          <p class="card-text text-light pb-1">{{games.CONDESCENDING_WORDS.cardBody}}</p>
+          <a href class="btn btn-dark mr-4" [routerLink]="games.CONDESCENDING_WORDS.path">Play</a>
+          <app-modal-button [title]="games.CONDESCENDING_WORDS.modal.title"
+            [body]="games.CONDESCENDING_WORDS.modal.body">
+          </app-modal-button>
+        </div>
       </div>
     </div>
   </div>

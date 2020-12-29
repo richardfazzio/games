@@ -12,7 +12,7 @@ import { HomeModule } from './pages/home/home.module';
 import { NotFoundModule } from './pages/not-found/not-found.module';
 import { SharedModule } from './common/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MemoryModule,
     NotFoundModule,
     RouterModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule

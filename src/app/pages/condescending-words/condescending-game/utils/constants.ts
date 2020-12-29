@@ -1,0 +1,1 @@
+export const WORDS_API_URL = 'https://type.fit/api/quotes';
