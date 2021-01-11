@@ -3,14 +3,15 @@
     <div class="col">
         <div class="row d-flex justify-content-center align-items-center">
             <svg class="words-game bg-dark" height="700" width="700">
-                <text *ngFor="let word of words" [attr.x]="word.y" [attr.y]="word.y">
+                <text x="620" y="25">Score: {{score}}</text>
+                <text *ngFor="let word of words" [attr.x]="word.x" [attr.y]="word.y">
                     {{word.text}}
                 </text>
             </svg>
         </div>
         <div class="row mt-2  d-flex justify-content-center align-items-center">
             <div class="col-sm-4 text-center">
-                <input type="text" class="form-control bg-dark border-secondary text-light" [(ngModel)]="userText">
+                <input type="text" class="form-control bg-dark border-secondary text-light" [(ngModel)]="userText" (ngModelChange)="inputChanged($event)">
             </div>
             <div class="col-sm-3 text-right">
                 <button class="btn btn-dark">Start</button>

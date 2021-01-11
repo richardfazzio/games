@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CondescendingPageComponent } from './condescending-page.component';
 
 describe('CondescendingPageComponent', () => {

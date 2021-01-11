@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CondescendingPageComponent } from './condescending-game/condescending-page.component';
 import { CondescendingRoutingModule } from './condescending-routing.module';
 import { SharedModule } from 'src/app/common/shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -10,7 +11,8 @@ import { SharedModule } from 'src/app/common/shared/shared.module';
   declarations: [CondescendingPageComponent],
   imports: [
     SharedModule,
-    CondescendingRoutingModule
+    CondescendingRoutingModule,
+    FormsModule
   ]
 })
 export class CondescendingWordsModule { }

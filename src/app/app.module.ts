@@ -28,7 +28,6 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundModule,
     RouterModule,
     HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule
   ],
