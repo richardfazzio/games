@@ -1,3 +1,9 @@
+
+export interface QuoteApiResult {
+    author?: string;
+    text: string;
+}
+
 export interface Word {
     text: string;
     x: number; // X Location on the board
@@ -9,4 +15,12 @@ export interface Line {
     author?: string;
     quote: string;
     words: Word[];
+}
+
+export interface GameUpdate {
+    line?: Line;
+    score: number;
+    lives: number;
+    wordsGuessed?: boolean;
+    roundOver?: boolean;
 }
