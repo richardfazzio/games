@@ -1,4 +1,14 @@
-<div class="container">
-    <div class="author">{{author}}</div>
-    <div class="quote">{{quote}}</div>
+<div class="modal-header bg-dark">
+    <!-- <div *ngIf="roundWon">Congrats! Good luck now next round!</div> -->
+    <div *ngIf="true">Oof next time!</div>
+    <div class="title" [innerText]="roundWon ? 'Congrats goodluck next round' : 'Dang, better luck next time'"></div>
+    <!-- <div *ngIf="true">Hello</div> -->
+    <button type="button" class="close text-light" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
+<div class="modal-body bg-secondary">
+    <h5 class="modal-title text-light">Author: {{author}}</h5>
+    <p class="border-secondary text-light">Quote: {{quote}}</p>
+</div>
+<div class="modal-footer bg-dark pb-4"></div>

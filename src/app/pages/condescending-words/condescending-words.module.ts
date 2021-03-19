@@ -4,6 +4,7 @@ import { CondescendingPageComponent } from './condescending-game/condescending-p
 import { CondescendingRoutingModule } from './condescending-routing.module';
 import { SharedModule } from 'src/app/common/shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 

@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { QuoteModalComponent } from './modals/quote-modal/quote-modal.component';
 import { WordsService } from './services/words.service';
 import { GAME_TICK } from './utils/constants';
+import { GameUpdate } from './utils/interfaces';
 
 @Component({
   selector: 'app-condescending-page',
@@ -25,7 +26,7 @@ export class CondescendingPageComponent implements OnInit, OnDestroy {
   constructor(private wordsService: WordsService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.wordsService.updateGameSubject.subscribe(data => {
+    this.wordsService.updateGameSubject.subscribe((data: GameUpdate) => {
       if (data.wordsGuessed){
         this.userText = '';
       }
@@ -40,6 +41,7 @@ export class CondescendingPageComponent implements OnInit, OnDestroy {
         });
         modalRef.componentInstance.author = data.line.author;
         modalRef.componentInstance.quote = data.line.quote;
+        modalRef.componentInstance.roundWon = data.roundWon;
       }
     });
 
@@ -48,7 +50,7 @@ export class CondescendingPageComponent implements OnInit, OnDestroy {
         debounceTime(GAME_TICK),
         distinctUntilChanged()
       )
-      .subscribe(word => {
+      .subscribe((word) => {
         this.wordsService.guessWord(word);
       });
 

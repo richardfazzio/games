@@ -76,7 +76,7 @@ export class MemoryService {
         // If they click the same card, do no penalize them
         this.selectCardOnBoard(row, column, true);
 
-        // If there is no previous guess update board and add to previous guess 
+        // If there is no previous guess update board and add to previous guess
         if (!this.previousGuess.length) {
             this.previousGuess = [row, column];
             this.gameSubsription.next(this.board);

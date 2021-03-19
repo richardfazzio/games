@@ -5,7 +5,7 @@
             <svg class="words-game bg-dark" height="700" width="700">
                 <text x="620" y="25">Score: {{score}}</text>
                 <text x="623" y="50">Lives: {{lives}}</text>
-                <text *ngFor="let word of words" [attr.x]="word.x" [attr.y]="word.y">
+                <text data-unselectable="unselectable content" *ngFor="let word of words" [attr.x]="word.x" [attr.y]="word.y">
                     {{word.text}}
                 </text>
             </svg>

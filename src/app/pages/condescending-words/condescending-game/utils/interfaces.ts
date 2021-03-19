@@ -23,4 +23,5 @@ export interface GameUpdate {
     lives: number;
     wordsGuessed?: boolean;
     roundOver?: boolean;
+    roundWon?: boolean;
 }

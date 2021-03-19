@@ -23,7 +23,7 @@ export class WordsService {
 
   async startGame(): Promise<void> {
     await this.getBagOfWords();
-    this.bagOfWords = this.bagOfWords.slice(0, 500).sort(() => Math.random() > 0.5 ? -1 : 1).shift();
+    this.bagOfWords = this.bagOfWords.slice(0, 500).sort(() => Math.random() > 0.5 ? -1 : 1);
     this.gameRunning = true;
     setTimeout(() => this.runGame(), GAME_START_DELAY);
   }
@@ -68,19 +68,24 @@ export class WordsService {
 
   startRound(): void {
     this.gameInterval = setInterval(() => {
+      if (!this.gameRunning) {
+        return;
+      }
       this.currentLine.words.forEach((word: Word) => word.y += word.speed);
       if (this.currentLine.words.some((word: Word) => word.y > MAX_GAME_HEIGHT)) {
-        this.lives--;
-        this.currentLine.words = this.currentLine.words.filter((word: Word) => word.y < MAX_GAME_HEIGHT);
+         !!this.lives && this.lives--;
+         this.currentLine.words = this.currentLine.words.filter((word: Word) => word.y < MAX_GAME_HEIGHT);
       }
       // Update data, default
-      const update = {
+      const update: GameUpdate = {
         line: this.currentLine,
         score: this.score,
         lives: this.lives
       };
       // Game is over clear interval and update
       if (this.lives < 1) {
+        this.gameRunning = false;
+        update.roundWon = !this.currentLine.words.length;
         clearInterval(this.gameInterval);
         this.updateGameSubject.next({
           ...update,
@@ -107,22 +112,19 @@ export class WordsService {
     if (typedCorrectly) {
       // User typed correctly
       this.score++;
+      const update = {
+        line: this.currentLine,
+        wordsGuessed: true,
+        score: this.score,
+        lives: this.lives
+      };
       if (!!this.currentLine.words.length) {
-        this.updateGameSubject.next({
-          line: this.currentLine,
-          wordsGuessed: true,
-          score: this.score,
-          lives: this.lives
-        });
+        this.updateGameSubject.next(update);
       } else {
-        alert('Round Won');
-        // this.updateGameSubject.next();
         this.updateGameSubject.next({
-          line: this.currentLine,
-          wordsGuessed: true,
-          score: this.score,
-          lives: this.lives,
-          roundOver: true
+          ...update,
+          roundOver: true,
+          roundWon: true
         });
       }
     }
